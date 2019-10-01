@@ -1,7 +1,9 @@
 package jpabook.jpashop.domain;
 
 import jpabook.jpashop.domain.item.Item;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -11,6 +13,8 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "order_item")
 public class OrderItem {
   @Id
   @GeneratedValue
@@ -35,6 +39,7 @@ public class OrderItem {
     item.removeStock(count);
     return orderItem;
   }
+
 //==비즈니스 로직==//
 
   /**
