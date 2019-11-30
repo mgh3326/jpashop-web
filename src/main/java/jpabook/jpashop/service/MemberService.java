@@ -40,4 +40,10 @@ public class MemberService {
   public Member findOne(Long memberId) {
     return memberRepository.findOne(memberId);
   }
+
+  @Transactional
+  public void update(Long id, String name) { // command와 query를 분리하는 것은 성향인데 이러면 좋을것 같다.
+    Member member = memberRepository.findOne(id);
+    member.setName(name);
+  }
 }
